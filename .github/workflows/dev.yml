@@ -31,10 +31,12 @@ jobs:
           name: artifacts
           path: target/*.jar
 
-    - name: Download a single artifact
-      uses: actions/download-artifact@v2
-      with:
-        name: artifacts
+    - name: Login to mulesoft
+        env:
+          USERNAME: ${{ secrets.ANYPOINT_USERNAME }}
+          PASSWORD: ${{ secrets.ANYPOINT_PASSWORD }}
+        run: |
+          curl -H "Content-Type: application/json" -X POST -d '{"username":"$USERNAME","password":"$PASSWORD"}' https://anypoint.mulesoft.com/accounts/login
   
   deploy:
     needs: build
@@ -50,12 +52,7 @@ jobs:
     - uses: actions/download-artifact@master
       with:
         name: artifacts
-    - name: Login to mulesoft
-        env:
-          USERNAME: ${{ secrets.ANYPOINT_USERNAME }}
-          PASSWORD: ${{ secrets.ANYPOINT_PASSWORD }}
-        run: |
-          curl -H "Content-Type: application/json" -X POST -d '{"username":"$USERNAME","password":"$PASSWORD"}' https://anypoint.mulesoft.com/accounts/login
+
     - name: Deploy to CloudHub
       env:
         USERNAME: ${{ secrets.ANYPOINT_USERNAME }}
