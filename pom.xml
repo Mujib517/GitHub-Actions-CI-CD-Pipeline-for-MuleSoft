@@ -34,7 +34,7 @@
                     <classifier>mule-application</classifier>
                     <cloudHubDeployment>
                         <uri>https://anypoint.mulesoft.com</uri>
-                        <muleVersion>4.3.0</muleVersion>
+                        <muleVersion>4.4.0</muleVersion>
                         <username>${env.USERNAME}</username>
                         <password>${env.PASSWORD}</password>
                         <applicationName>github-actions-test</applicationName>
