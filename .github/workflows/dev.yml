@@ -32,11 +32,11 @@ jobs:
           path: target/*.jar
 
     - name: Login to mulesoft
-        env:
-          USERNAME: ${{ secrets.ANYPOINT_USERNAME }}
-          PASSWORD: ${{ secrets.ANYPOINT_PASSWORD }}
-        run: |
-          curl -H "Content-Type: application/json" -X POST -d '{"username":"$USERNAME","password":"$PASSWORD"}' https://anypoint.mulesoft.com/accounts/login
+      env:
+        USERNAME: ${{ secrets.ANYPOINT_USERNAME }}
+        PASSWORD: ${{ secrets.ANYPOINT_PASSWORD }}
+      run: |
+        curl -H "Content-Type: application/json" -X POST -d '{"username":"$USERNAME","password":"$PASSWORD"}' https://anypoint.mulesoft.com/accounts/login
   
   deploy:
     needs: build
