@@ -31,11 +31,6 @@ jobs:
           name: artifacts
           path: target/*.jar
 
-      - name: Download a single artifact
-        uses: actions/download-artifact@v2
-        with:
-          name: artifacts
-  
   deploy:
     needs: build
     runs-on: ubuntu-latest
