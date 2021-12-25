@@ -36,7 +36,7 @@ jobs:
         USERNAME: ${{ secrets.ANYPOINT_USERNAME }}
         PASSWORD: ${{ secrets.ANYPOINT_PASSWORD }}
       run: |
-        curl -H "Content-Type: application/json" -X POST -d '{"username":"'"$USERNAME"'","password":"'"$PASSWORD"'"}' https://anypoint.mulesoft.com/accounts/login
+        curl -H "Content-Type: application/json" -X POST -d '{"username":"'"${{ secrets.ANYPOINT_USERNAME }}"'","password":"'"${{ secrets.ANYPOINT_PASSWORD }}"'"}' https://anypoint.mulesoft.com/accounts/login
   
   deploy:
     needs: build
